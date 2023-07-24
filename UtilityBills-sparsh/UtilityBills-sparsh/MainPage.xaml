@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UtilityBills_sparsh.MainPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true">
+
+    <StackLayout Margin="10, 20, 10, 20">
+        <Label Text="Utility Bill Calculator" HorizontalTextAlignment="Center" FontSize="35" Padding="16"/>
+        
+        <Label Text="Choose Your Provience" FontSize="20"/>
+        <Picker x:Name="xProvience" Title="Select your province" SelectedIndexChanged="provincePicker_SelectedIndexChanged">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>AB</x:String>
+                    <x:String>BC</x:String>
+                    <x:String>ON</x:String>
+                    <x:String>NL</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <Label Text="Daytime usage (kwh)" FontSize="20"/>
+        <Entry x:Name="xUsage" Placeholder="Enter the daytime usage" Keyboard="Numeric"/>
+
+        <Label Text="Evening usage (kwh)" FontSize="20"/>
+        <Entry x:Name="xEveningUsage" Placeholder="Enter the eveing usage" Keyboard="Numeric"/>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Did you use a renewable energy source?" FontSize="20"/>
+            <Switch x:Name="switchState" Toggled="switchState_Toggled"/>
+            <Label x:Name="switchStatusLabel" Text="OFF" FontSize="15" HorizontalTextAlignment="Center"/>
+
+
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Margin="60,10,60,0">
+            <Button Text="CALCULATE" Clicked="btnCalculate_Clicked" HorizontalOptions="FillAndExpand" BackgroundColor="LightBlue" TextColor="DarkSlateBlue"/>
+            <Button Text="RESET" Clicked="btnReset_Clicked" HorizontalOptions="FillAndExpand" BackgroundColor="LightBlue" TextColor="DarkSlateBlue"/>
+        </StackLayout>
+        <Label x:Name="xError" IsVisible="false" Text="You must enter valid usage values." TextColor="Beige" FontSize="18" Padding="12" BackgroundColor="DarkRed" Margin="11"/>
+        
+        <!--Result after Calculation-->
+        <Label x:Name="lblResult" Text="Charge Breakdown" IsVisible="False" HorizontalTextAlignment="Center" FontSize="30" Padding="16"/>
+        <Label x:Name="lblResult0" Text="" FontSize="20"/>
+        <Label x:Name="lblResult1" Text="" FontSize="20"/>
+        <Label x:Name="lblResult2" Text="" FontSize="20"/>
+        <Label x:Name="lblResult3" Text="" FontSize="20"/>
+        <Label x:Name="lblResult4" Text="" FontSize="20"/>
+        
+        <Label x:Name="lblResult5" IsVisible="False" Text="" FontSize="20" HorizontalTextAlignment="Center" BackgroundColor="LightGoldenrodYellow"/>
+
+
+
+    </StackLayout>
+
+</ContentPage>
